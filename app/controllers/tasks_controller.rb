@@ -48,7 +48,7 @@ class TasksController < ApplicationController
   end
 end
 
-class A
+class TasksController
  private
 
  def task_params
