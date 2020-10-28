@@ -48,10 +48,10 @@ class TasksController < ApplicationController
   end
 end
 
-class TasksController
- private
+　private
 
+ # Strong Parameter
  def task_params
   params.require(:task).permit(:content)
  end
-end 
+
