@@ -43,7 +43,6 @@ class TasksController < ApplicationController
   flash[:success] = 'タスクが削除されました'
   redirect_to tasks_path
   end
-end  
 
    private
  # Strong Parameter
@@ -54,3 +53,4 @@ end
    def task_params
   　params.require(:task).permit(:content, :status)
    end
+end
