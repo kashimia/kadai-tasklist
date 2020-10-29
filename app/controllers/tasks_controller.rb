@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+   #全てこの中に記述 
    before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
        @tasks = Task.all.page(params[:page])
