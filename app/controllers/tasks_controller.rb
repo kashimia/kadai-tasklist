@@ -2,11 +2,10 @@ class TasksController < ApplicationController
    #全てこの中に記述 
   
    before_action :set_task, only: [:show, :edit, :update, :destroy]
-   before_action :require_user_logged_in, only: [:show, :edit, :update, :destroy]
+   before_action :require_user_logged_in, only: [:index,:show, :edit, :update, :destroy]
    before_action :correct_user, only: [:destroy]
    
    def index
-      @tasks = Task.all
       if logged_in?
         @task = current_user.tasks.build  # form_with 用
         @tasks = current_user.tasks.order(id: :desc).page(params[:page])
@@ -29,7 +28,7 @@ class TasksController < ApplicationController
       redirect_to root_url
     else
       flash[:danger] = 'タスクが投稿されません'
-      render 'toppages/index'
+      render :new
     end
    end
 
@@ -43,7 +42,6 @@ class TasksController < ApplicationController
     else
     flash.now[:danger] = 'タスクが編集されませんでした'
     render :new
-    render 'toppages/index'
     end
    end
 
