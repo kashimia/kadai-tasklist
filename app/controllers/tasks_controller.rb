@@ -2,8 +2,9 @@ class TasksController < ApplicationController
    #全てこの中に記述 
   
    before_action :set_task, only: [:show, :edit, :update, :destroy]
-   before_action :require_user_logged_in, only: [:index,:show, :edit, :update, :destroy]
+   before_action :require_user_logged_in, only: [:index, :new, :create,:show,:edit, :update, :destroy]
    before_action :correct_user, only: [:destroy]
+   before_action :authenticate_user!, only: [:show]
    
    def index
       if logged_in?
@@ -13,6 +14,7 @@ class TasksController < ApplicationController
    end
 
    def show
+    
    end
 
    def new
